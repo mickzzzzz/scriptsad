@@ -1,0 +1,21 @@
+Import-Module ActiveDirectory
+
+# Import the CSV file
+$users = Import-Csv -Path C:\path\to\users.csv
+
+# Loop through each user in the CSV file
+foreach ($user in $users) {
+  # Create the user object
+  New-ADUser -Name $user.Name `
+             -SamAccountName $user.SamAccountName `
+             -UserPrincipalName $user.UserPrincipalName `
+             -GivenName $user.GivenName `
+             -Surname $user.Surname `
+             -DisplayName $user.DisplayName `
+             -Description $user.Description `
+             -Path $user.Path `
+             -Enabled $true
+
+  # Set the password for the user
+  Set-ADAccountPassword -Identity $user.SamAccountName -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $user.Password -Force)
+}
