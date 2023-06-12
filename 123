@@ -1,0 +1,33 @@
+# Function to generate a random realistic first name
+Function Get-RandomFirstName {
+    $firstNameList = @(
+        "Anna","Ella","Emma","Ida","Ingrid","Lilly","Linnea","Maja","Maria","Sara","Sofia","Aksel","Anders","Erik","Fredrik","Hans","Henrik","Johan","Karl","Lars","Mats","Olof","Per","Sven","Thomas"
+    )
+    $randomIndex = Get-Random -Minimum 0 -Maximum ($firstNameList.Count - 1)
+    return $firstNameList[$randomIndex]
+}
+
+# Function to generate a random realistic last name
+Function Get-RandomLastName {
+    $lastNameList = @(
+        "Andersen","Hansen","Jensen","Nielsen","Pedersen","Christensen","Petersen","Larsen","Madsen","Johansen","Olsen","Sørensen","Rasmussen","Christiansen","Møller","Mortensen","Thomsen","Svendsen","Jørgensen","Mikkelsen","Eriksen","Kristensen","Poulsen","Knudsen","Lund"
+    )
+    $randomIndex = Get-Random -Minimum 0 -Maximum ($lastNameList.Count - 1)
+    return $lastNameList[$randomIndex]
+}
+
+# Generate 26,000 combinations of first names and last names
+$numberOfCombinations = 26000
+$combinations = @()
+for ($i = 1; $i -le $numberOfCombinations; $i++) {
+    $firstName = Get-RandomFirstName
+    $lastName = Get-RandomLastName
+    $combination = [PSCustomObject]@{
+        FirstName = $firstName
+        LastName = $lastName
+    }
+    $combinations += $combination
+}
+
+# Save the combinations to a CSV file
+$combinations | Export-Csv -Path "c:\temp\names.csv" -NoTypeInformation
