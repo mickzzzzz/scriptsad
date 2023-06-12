@@ -1,0 +1,25 @@
+# Opret en AD-root OU
+New-ADOrganizationalUnit -Name "Universitet Lolland" -Path "DC=Gruppe2,DC=LU"
+
+# Opret underenheder i Universitet Lolland OU
+New-ADOrganizationalUnit -Name "HR" -Path "OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "IT" -Path "OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Elever" -Path "OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Administration" -Path "OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+
+# Opret Computers, Users og Groups OU i hver underenhed
+New-ADOrganizationalUnit -Name "Computers" -Path "OU=HR,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Users" -Path "OU=HR,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Groups" -Path "OU=HR,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+
+New-ADOrganizationalUnit -Name "Computers" -Path "OU=IT,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Users" -Path "OU=IT,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Groups" -Path "OU=IT,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+
+New-ADOrganizationalUnit -Name "Computers" -Path "OU=Elever,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Users" -Path "OU=Elever,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Groups" -Path "OU=Elever,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+
+New-ADOrganizationalUnit -Name "Computers" -Path "OU=Administration,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Users" -Path "OU=Administration,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
+New-ADOrganizationalUnit -Name "Groups" -Path "OU=Administration,OU=Universitet Lolland,DC=Gruppe2,DC=LU"
